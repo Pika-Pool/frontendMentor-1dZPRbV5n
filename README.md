@@ -2,6 +2,7 @@
 # Frontend Mentor - Fylo data storage component
 
 ***Preview at*** : 
+[https://storage-component.pika-pool.vercel.app/](https://storage-component.pika-pool.vercel.app/)
 
 
 <img src="./design/desktop-preview.jpg" width="500px">
