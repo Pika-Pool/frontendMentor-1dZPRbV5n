@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- displays site properly based on user's device -->
+
+	<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+	<title>Fylo data storage component</title>
+	<link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+	<main class="main">
+		<section class="utils">
+			<img src="./images/logo.svg" alt="" class="logo">
+
+			<ul>
+				<li class="util">
+					<button>
+						<img src="./images/icon-document.svg" alt="">
+					</button>
+				</li>
+				<li class="util">
+					<button>
+						<img src="./images/icon-folder.svg" alt="">
+					</button>
+				</li>
+				<li class="util">
+					<button>
+						<img src="./images/icon-upload.svg" alt="">
+					</button>
+				</li>
+			</ul>
+		</section>
+
+		<section class="info">
+			<p>You’ve used <strong>815 GB</strong> of your storage</p>
+
+			<div class="progress-container">
+				<div class="progress">
+					<div class="background"></div>
+					<div class="foreground"></div>
+				</div>
+
+				<div class="progress-range">
+					<span class="min"><strong>0 GB</strong></span>
+					<span class="max"><strong>1000 GB</strong></span>
+				</div>
+			</div>
+
+			<div class="gb-left">
+				<span class="gbs">185</span>
+				GB LEFT
+			</div>
+		</section>
+	</main>
+
+	<script>
+		function perform() {
+			const info = document.querySelector('.info');
+			info.classList.toggle('perform');
+		}
+	</script>
+
+</body>
+
+</html>

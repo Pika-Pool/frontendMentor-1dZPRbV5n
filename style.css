@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+:root {
+	--progress-gradient: linear-gradient(
+		to right,
+		hsl(6, 100%, 80%),
+		hsl(335, 100%, 65%)
+	);
+	--background-gradient: linear-gradient(
+		135deg,
+		rgb(23, 37, 86),
+		rgb(15, 27, 61)
+	);
+
+	--Pale-Blue: hsl(243, 100%, 93%);
+	--Grayish-Blue: hsl(229, 7%, 55%);
+	--Dark-Blue: hsl(228, 56%, 26%);
+	--Very-Dark-Blue: hsl(229, 57%, 11%);
+
+	--percent: 81.5%;
+}
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	background: url('images/bg-desktop.png') no-repeat var(--Very-Dark-Blue);
+	background-size: contain;
+	background-position: 0% 130%;
+
+	min-height: 100vh;
+	margin: 0;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	font-size: 1.4rem;
+	font-family: 'Raleway', sans-serif;
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	width: 35rem;
+	max-width: 35rem;
+}
+
+section {
+	background-color: var(--Dark-Blue);
+	border-radius: 1em;
+	width: 100%;
+}
+
+.utils {
+	margin-bottom: 1em;
+	padding: 3em;
+	border-top-right-radius: 50%;
+}
+
+.utils ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	display: flex;
+}
+
+.util {
+	margin: 2em 0 0 1.5em;
+}
+
+.util:first-child {
+	margin-left: 0;
+}
+
+.util button {
+	--side-length: 3.5em;
+	height: var(--side-length);
+	width: var(--side-length);
+
+	border: none;
+	background-color: var(--Very-Dark-Blue);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 0.5em;
+	cursor: pointer;
+
+	transition: transform 0.03s ease;
+}
+
+.util button:hover {
+	transform: scale(1.1);
+}
+
+.info {
+	position: relative;
+	padding: 1.6em 2.2em 4em;
+	text-align: center;
+	color: var(--Pale-Blue);
+}
+
+.info p {
+	margin-bottom: 1.6em;
+}
+
+.progress-container {
+	margin-bottom: 1em;
+}
+
+.progress {
+	--height: 1.5em;
+
+	position: relative;
+	width: 100%;
+	height: var(--height);
+	margin-bottom: 0.5em;
+}
+
+.progress .background {
+	position: absolute;
+	top: 0;
+	z-index: 0;
+
+	background-color: var(--Very-Dark-Blue);
+	width: 100%;
+	height: var(--height);
+	border-radius: 2em;
+}
+
+.progress .foreground {
+	position: absolute;
+	top: 0;
+	z-index: 1;
+
+	width: var(--percent);
+	background: var(--progress-gradient);
+	height: var(--height);
+	border-radius: 2em;
+}
+
+.progress .foreground::after {
+	content: '';
+	position: absolute;
+	right: 2px;
+	top: 50%;
+	transform: translateY(-50%);
+
+	height: calc(var(--height) - 2px);
+	width: calc(var(--height) - 2px);
+	background-color: white;
+	border: 2px solid var(--Grayish-Blue);
+	border-radius: 50%;
+}
+
+.progress-range {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.info .gb-left {
+	position: absolute;
+	right: 50%;
+	top: calc(100% - 3em);
+	transform: translateX(50%);
+
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+
+	width: 60%;
+	background-color: white;
+	padding: 1em 1.3em;
+	border-radius: 1em;
+
+	color: var(--Grayish-Blue);
+	font-weight: 700;
+}
+
+.info .gb-left .gbs {
+	color: var(--Very-Dark-Blue);
+	font-size: 3em;
+}
+
+@media screen and (max-width: 645px) {
+	body {
+		background-image: url('images/bg-mobile.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: 0 0;
+	}
+}
+
+@media screen and (max-width: 875px) {
+	body {
+		background-position-y: 100%;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.main {
+		width: 95rem;
+		max-width: 95rem;
+		flex-direction: row;
+		align-items: flex-end;
+		padding: 0;
+	}
+
+	.utils {
+		margin: 0;
+		margin-right: 2em;
+		flex: 1 1 35%;
+	}
+
+	.info {
+		flex: 2 2 65%;
+		text-align: left;
+		padding-bottom: 1.6em;
+	}
+
+	.progress-container {
+		margin-bottom: 1em;
+	}
+
+	.info .gb-left {
+		position: absolute;
+		transform: translate(0);
+		right: 2.2em;
+		top: -4em;
+
+		width: 12.7em;
+	}
+
+	.info .gb-left::after {
+		content: '';
+		position: absolute;
+		right: 0;
+		bottom: -16px;
+
+		border: 16px solid transparent;
+		border-right-color: white;
+	}
+}
+
+.info.perform .progress .foreground {
+	animation-name: perform;
+	animation-timing-function: linear;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes perform {
+	0% {
+		width: 0%;
+	}
+	50% {
+		width: 100%;
+	}
+	100% {
+		width: 0%;
+	}
+}
